@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Oracle Monitoring</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="/src/resources/static/css/bootstrap.min.css">
+
+
+    <!-- Latest compiled JavaScript -->
+    <script src="/src/resources/static/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+<div align="center">
+    <h1>ORACLE DB INSTANCE </h1>
+    <a href="/new">Enter </a>
+    <br/><br/>
+
+
+    <p>CURRENT TIME</p>
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>current_timestamp</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listCurrentTime : ${listCurrentTime}">
+            <td th:text="${listCurrentTime.current_timestamp}">current_timestamp</td>
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+    <br/>
+
+    <p>DB BASIC INFO</p>
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>DB_NAME</th>
+            <th>LOG_MODE</th>
+            <th>FLASHBACK</th>
+            <th>DB_ROLE</th>
+            <th>UPTIME</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="basic : ${listBasic}">
+            <td th:text="${basic.db_unique_name}">db_unique_name</td>
+            <td th:text="${basic.log_mode}">log_mode Name</td>
+            <td th:text="${basic.flashback_on}">flashback_on</td>
+            <td th:text="${basic.database_role}">database_role</td>
+            <td th:text="${basic.uptime}">uptime</td>
+
+<!--            <td>-->
+<!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+<!--                &nbsp;&nbsp;&nbsp;-->
+<!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+<!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+
+
+    <p>USER DEFAULT TABLESPACE</p>
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>username</th>
+            <th>default_tablespace</th>
+            <th>temporary_tablespace</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="defaulttbs : ${listDefaultTbs}">
+            <td th:text="${defaulttbs.username}">db_unique_name</td>
+            <td th:text="${defaulttbs.default_tablespace}">log_mode</td>
+            <td th:text="${defaulttbs.temporary_tablespace}">flashback_on</td>
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+
+
+    <p>TABLESPACE USAGE</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>tablespace_name</th>
+            <th>current_size_mb</th>
+            <th>max_size_mb</th>
+            <th>used_mb</th>
+            <th>free_mb</th>
+            <th>used_pct</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listTbsDetail : ${listTbsDetail}">
+            <td th:text="${listTbsDetail.tablespace_name}">tablespace_name</td>
+            <td th:text="${listTbsDetail.current_size_mb}">current_size_mb</td>
+            <td th:text="${listTbsDetail.max_size_mb}">max_size_mb</td>
+            <td th:text="${listTbsDetail.used_mb}">used_mb</td>
+            <td th:text="${listTbsDetail.free_mb}">free_mb</td>
+            <td th:text="${listTbsDetail.used_pct}">used_pct</td>
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+
+    <p>ARCHIVLOG DETAILS</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>location</th>
+            <th>space_limit_mb</th>
+            <th>space_used_mb</th>
+            <th>space_reclaimable_mb</th>
+            <th>number_of_files</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listArchivelog : ${listArchivelog}">
+            <td th:text="${listArchivelog.name}">name</td>
+            <td th:text="${listArchivelog.space_limit}">space_limit_mb</td>
+            <td th:text="${listArchivelog.space_used}">space_used_mb</td>
+            <td th:text="${listArchivelog.space_reclaimable}">space_reclaimable_mb</td>
+            <td th:text="${listArchivelog.number_of_files}">number_of_files</td>
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+    <p>LAST RMAN JOB</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>session_key</th>
+            <th>input_types</th>
+            <th>status</th>
+            <th>start_time</th>
+            <th>end_time</th>
+            <th>hrs</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listRmanTime : ${listRmanTime}">
+            <td th:text="${listRmanTime.session_key}">session_key</td>
+            <td th:text="${listRmanTime.input_type}">input_type</td>
+            <td th:text="${listRmanTime.status}">status</td>
+            <td th:text="${listRmanTime.start_time}">start_time</td>
+            <td th:text="${listRmanTime.end_time}">end_time</td>
+            <td th:text="${listRmanTime.hrs}">hrs</td>
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+
+    <p>current  RMAN JOB</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>sid</th>
+            <th>serial</th>
+            <th>context</th>
+            <th>sofar</th>
+            <th>total</th>
+            <th>complete</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listRmanCurrent : ${listRmanCurrent}">
+            <td th:text="${listRmanCurrent.sid}">sid</td>
+            <td th:text="${listRmanCurrent.serial}">serial</td>
+            <td th:text="${listRmanCurrent.context}">context</td>
+            <td th:text="${listRmanCurrent.sofar}">sofar</td>
+            <td th:text="${listRmanCurrent.total}">total</td>
+            <td th:text="${listRmanCurrent.completed}">completed</td>
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+
+
+
+
+
+
+    <p>RMAN HISTORY</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>sid</th>
+            <th>serial</th>
+            <th>context</th>
+            <th>sofar</th>
+            <th>total</th>
+            <th>complete</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listRmanHistory : ${listRmanHistory}">
+            <td th:text="${listRmanHistory.session_key}">session_key</td>
+            <td th:text="${listRmanHistory.input_type}">input_type</td>
+            <td th:text="${listRmanHistory.status}">status</td>
+            <td th:text="${listRmanHistory.rman_bkup_start_time}">rman_bkup_start_time</td>
+            <td th:text="${listRmanHistory.rman_bkup_end_time}">rman_bkup_end_time</td>
+            <td th:text="${listRmanHistory.hours}">hours</td>
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+
+    <p>LONG RUNNING OBJECTS</p>
+
+
+    <table class="table" border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>opname</th>
+            <th>start_time</th>
+            <th>target</th>
+            <th>sofar</th>
+            <th>totalworks</th>
+            <th>units</th>
+            <th>elapsed_seconds</th>
+            <th>message</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="listLongRunningObj : ${listLongRunningObj}">
+            <td th:text="${listLongRunningObj.opname}">opname</td>
+            <td th:text="${listLongRunningObj.start_time}">start_time</td>
+            <td th:text="${listLongRunningObj.target}">target</td>
+            <td th:text="${listLongRunningObj.sofar}">sofar</td>
+            <td th:text="${listLongRunningObj.totalworks}">totalworks</td>
+            <td th:text="${listLongRunningObj.units}">units</td>
+            <td th:text="${listLongRunningObj.elapsed_seconds}">elapsed_seconds</td>
+            <td th:text="${listLongRunningObj.message}">message</td>
+
+
+
+            <!--            <td>-->
+            <!--                <a th:href="/@{'/edit/' + ${sale.id}}">Edit</a>-->
+            <!--                &nbsp;&nbsp;&nbsp;-->
+            <!--                <a th:href="/@{'/delete/' + ${sale.id}}">Delete</a>-->
+            <!--            </td>-->
+        </tr>
+        </tbody>
+    </table>
+
+    </br>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
